@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  alwaysLocationTest
 //
-//  Created by MacBook Air on 10/11/17.
+//  Created by Oz  on 10/11/17.
 //  Copyright © 2017 Desarrollo Software. All rights reserved.
 //
 
