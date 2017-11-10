@@ -13,6 +13,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     private let locationManager = CLLocationManager()
    
+    @IBOutlet weak var location: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -37,6 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("\(locationManager.location)")
+        self.location.text = "\(locationManager.location!)"
     }
     
     func AutorizacionLocation(_fuctionCall: String){
