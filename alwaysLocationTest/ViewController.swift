@@ -39,6 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("\(locationManager.location)")
         self.location.text = "\(locationManager.location!)"
+        
     }
     
     func AutorizacionLocation(_fuctionCall: String){
@@ -71,6 +72,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.distanceFilter = kCLDistanceFilterNone
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+            //locationManager.allowsBackgroundLocationUpdates = true
             print("\(locationManager.location)")
         case .authorizedWhenInUse:
             print("\(_fuctionCall): DENIED")

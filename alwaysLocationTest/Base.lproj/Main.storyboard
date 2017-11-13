@@ -27,10 +27,10 @@
                         </subviews>
                         <color key="backgroundColor" red="0.073198013007640839" green="0.15285611152648926" blue="0.26251715421676636" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KRt-JU-U1u" secondAttribute="trailing" constant="16" id="7g4-0n-6Uw"/>
-                            <constraint firstItem="KRt-JU-U1u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Inv-KR-aUy"/>
-                            <constraint firstItem="KRt-JU-U1u" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="scm-gd-ZZy"/>
-                            <constraint firstItem="KRt-JU-U1u" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="vIz-Lu-liK"/>
+                            <constraint firstItem="KRt-JU-U1u" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Hee-GJ-2vK"/>
+                            <constraint firstItem="KRt-JU-U1u" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Z4h-QM-gc6"/>
+                            <constraint firstItem="KRt-JU-U1u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="cSZ-Jt-czi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="KRt-JU-U1u" secondAttribute="trailing" constant="16" id="ncO-5l-kFY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
