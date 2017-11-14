@@ -12,6 +12,7 @@
 		414960381FB6279900647AC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 414960361FB6279900647AC5 /* Main.storyboard */; };
 		4149603A1FB6279900647AC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 414960391FB6279900647AC5 /* Assets.xcassets */; };
 		4149603D1FB6279900647AC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4149603B1FB6279900647AC5 /* LaunchScreen.storyboard */; };
+		41CCB36A1FBB49E8002CD294 /* UpdatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CCB3691FBB49E8002CD294 /* UpdatesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		4149603C1FB6279900647AC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4149603E1FB6279900647AC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		414960451FB627FD00647AC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		41CCB3691FBB49E8002CD294 /* UpdatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				414960321FB6279900647AC5 /* AppDelegate.swift */,
 				414960341FB6279900647AC5 /* ViewController.swift */,
 				414960361FB6279900647AC5 /* Main.storyboard */,
+				41CCB3691FBB49E8002CD294 /* UpdatesViewController.swift */,
 				414960391FB6279900647AC5 /* Assets.xcassets */,
 				4149603B1FB6279900647AC5 /* LaunchScreen.storyboard */,
 				4149603E1FB6279900647AC5 /* Info.plist */,
@@ -111,6 +114,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
 						};
 					};
 				};
@@ -153,6 +159,7 @@
 			files = (
 				414960351FB6279900647AC5 /* ViewController.swift in Sources */,
 				414960331FB6279900647AC5 /* AppDelegate.swift in Sources */,
+				41CCB36A1FBB49E8002CD294 /* UpdatesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

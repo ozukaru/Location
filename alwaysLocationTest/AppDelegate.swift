@@ -5,9 +5,13 @@
 //  Created by Oz Zuñiga on 10/11/17.
 //  Copyright © 2017 Oz Zuñiga . All rights reserved.
 //
+//ALERT!!!!!!
+// agregar en archivo info.plis el valor:  Privacy - Location Always and When In Use Usage Description
+// Habilitar en CApabilities de la app: BackGround Modes, Location updates y background fetch
+
 
 import UIKit
-import CoreLocation
+import CoreLocation// location framework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -41,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+       // print("Become Active")
+       // self.doBackgroundTask()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -48,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        print("Entering Backround")
+        print("BACKGROUND")
         self.doBackgroundTask()
     }
     
@@ -67,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func beginBackgroundUpdateTask() {
         self.backgroundUpdateTask = UIApplication.shared.beginBackgroundTask(expirationHandler: {
-            self.endBackgroundUpdateTask()
+           // self.endBackgroundUpdateTask()
         })
     }
     
@@ -97,6 +103,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print("Nuevas Coordenadas: ")
         print(self.latitude)
         print(self.longitude)
+        print("TIMEEEEE: \(String(describing: locationManager.location?.timestamp))")
+        
+       sendLocation(latitude: self.latitude, longitude: self.longitude, state: "Background")
+        
     }
     
     @objc func bgtimer(_ timer:Timer!){self.updateLocation()}
@@ -104,6 +114,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func updateLocation() {
         self.locationManager.startUpdatingLocation()
         self.locationManager.stopUpdatingLocation()
+    }
+    
+    
+    
+    func sendLocation(latitude:Double, longitude: Double, state:String){
+        let request = NSMutableURLRequest(url: URL(string:"http://192.168.213.90:8888/locations.php")!)
+        request.httpMethod = "POST"
+        let postString = "latitude=\(latitude)&longitude=\(longitude)&app_state=\(state)"
+        request.httpBody = postString.data(using: String.Encoding.utf8)
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { (data,response,error) in
+            if error != nil{print("error=\(error)")
+                return
+            }
+            print ("mandado latitude =\(latitude)&longitude =\(longitude))")
+            print ("response = \(String(describing: response))")
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print ("responseString = \(String(describing: responseString))")
+        }
+        task.resume()
     }
 
 }
