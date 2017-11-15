@@ -23,7 +23,7 @@ class Location: UIViewController, CLLocationManagerDelegate{
     var latitude: Double = 0.0
     var longitude: Double = 0.0
     var current_time = NSDate().timeIntervalSince1970
-    
+    let alertController = UIAlertController(title: "Para ofrecerte el mejor uso de la aplicación Es necesaria la Ubicación Siempre", message: "cambia la configuarción de Ubicación", preferredStyle: UIAlertControllerStyle.alert)
    
     
 
@@ -76,11 +76,11 @@ class Location: UIViewController, CLLocationManagerDelegate{
     
 //ALERTA DE CONFIGURACIONES-----------------------------------------------------
     func alertLocation(vc: UIViewController){//alerta para cambiar la autorización de localización en las configuraciones de la app
-        let alertController = UIAlertController(title: "Para ofrecerte el mejor uso de la aplicación Es necesaria la Ubicación Siempre", message: "cambia la configuarción de Ubicación", preferredStyle: UIAlertControllerStyle.alert)
+        
         alertController.addAction(UIAlertAction(title: "ir a Configuraciones", style: .default, handler: { action in
             UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
             if CLLocationManager.authorizationStatus() != .authorizedAlways{self.AutorizacionLocation()}
-            else{alertController.dismiss(animated: true, completion: nil)}
+            else{self.alertController.dismiss(animated: true, completion: nil)}
         }))
           vc.present(alertController, animated: true, completion: nil)
     }
@@ -107,6 +107,7 @@ class Location: UIViewController, CLLocationManagerDelegate{
         if CLLocationManager.authorizationStatus() != .authorizedAlways{
            self.AutorizacionLocation()
         }
+        else{alertController.dismiss(animated: true, completion: nil) }
          // cuando cambia el estatus de autorizacion de localización llama a la funcion AutorizacionLocation para verificar que la auroizacion sea Always
     }
     
