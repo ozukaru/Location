@@ -17,8 +17,10 @@ import CoreLocation// location framework
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
-    
-    var locationManager = CLLocationManager()
+   var ubicacion = Location()
+    var version = update()
+    //variables
+   var locationManager = CLLocationManager()
     var backgroundUpdateTask: UIBackgroundTaskIdentifier!
     var bgtimer = Timer()
     var latitude: Double = 0.0
@@ -34,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        locationManager.delegate = self
     }
 
    
@@ -55,15 +56,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         print("BACKGROUND")
-        self.doBackgroundTask()
+         if CLLocationManager.authorizationStatus() == .authorizedAlways{ubicacion.doBackgroundTask()}
     }
     
-    
+   /*
     func doBackgroundTask() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { //en hilo principal
             self.beginBackgroundUpdateTask()
             self.StartupdateLocation()
-            self.bgtimer = Timer.scheduledTimer(timeInterval: 1*60, target: self, selector: #selector(AppDelegate.bgtimer(_:)), userInfo: nil, repeats: true)
+            self.bgtimer = Timer.scheduledTimer(timeInterval: 1*60, target: self, selector: #selector(AppDelegate.bgtimer(_:)), userInfo: nil, repeats: true)//repetir cada segundo
             RunLoop.current.add(self.bgtimer, forMode: RunLoopMode.defaultRunLoopMode)
             RunLoop.current.run()
             self.endBackgroundUpdateTask()
@@ -83,6 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func StartupdateLocation() {
+        //configuracion de localizacion
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
@@ -134,6 +136,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         task.resume()
     }
-
+*/
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if CLLocationManager.authorizationStatus() != .authorizedAlways{
+            self.ubicacion.AutorizacionLocation()
+        }
+        // cuando cambia el estatus de autorizacion de localización llama a la funcion AutorizacionLocation para verificar que la auroizacion sea Always
+    }
 }
 

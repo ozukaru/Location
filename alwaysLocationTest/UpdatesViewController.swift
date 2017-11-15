@@ -11,17 +11,26 @@ import UIKit
 class UpdatesViewController: UIViewController {
 
     @IBOutlet weak var actualizarButton: UIButton!
-    @IBOutlet weak var omitirButon: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        actualizarButton.layer.cornerRadius = 10
+        actualizarButton.layer.cornerRadius = 12
         actualizarButton.clipsToBounds = true
-        omitirButon.layer.cornerRadius = 10
-        omitirButon.clipsToBounds = true
+       
     }
     
     @IBAction func actualizar(_ sender: Any) {
+        
+        let url = URL(string: "https://www.google.com")
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            //If you want handle the completion block than
+            UIApplication.shared.open(url!, options: [:], completionHandler: { (success) in
+                
+                print("Open url : \(success)")
+            })
+        }
     }
     
 }
