@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         print("BACKGROUND")
-        ubicacion.doBackgroundTask()
+         if CLLocationManager.authorizationStatus() == .authorizedAlways{ubicacion.doBackgroundTask()}
     }
     
    /*
@@ -137,6 +137,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         task.resume()
     }
 */
- 
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if CLLocationManager.authorizationStatus() != .authorizedAlways{
+            self.ubicacion.AutorizacionLocation()
+        }
+        // cuando cambia el estatus de autorizacion de localización llama a la funcion AutorizacionLocation para verificar que la auroizacion sea Always
+    }
 }
 
